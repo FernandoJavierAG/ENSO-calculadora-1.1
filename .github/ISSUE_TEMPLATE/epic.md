@@ -2,7 +2,7 @@
 name: Epic
 about: Scrum epic
 title: "[EPIC] "
-labels: epic
+labels: ''
 assignees: ''
 
 ---
