@@ -45,4 +45,14 @@ public interface EventHandler {
      * Handle the clear/reset button press
      */
     void onClearPressed();
+    
+    /**
+     * Handle the "pi" button
+     */
+    void onPiNumberPressed();
+
+    /**
+     * Handle the "e" button
+     */
+    void onEulerNumberPressed();
 }

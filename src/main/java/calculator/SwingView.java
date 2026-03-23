@@ -41,6 +41,7 @@ public class SwingView implements View {
             butEqual, butCancel, butSqrt, butSquare, butInv, butCos, 
             butSin, butTan, butPower, butLog, butPercent, butAbs, butBin, 
             butln, butNegate, butDecimal;
+    private final JButton butPi, butEuler;
 
     private EventHandler eventHandler;
 
@@ -110,6 +111,9 @@ public class SwingView implements View {
         butBin = createButton("bin", ButtonType.FUNCTION);
         butNegate = createButton("+/-", ButtonType.NUMBER);
         butDecimal = createButton(".", ButtonType.NUMBER);
+        
+        butPi = createButton("π", ButtonType.NUMBER);
+        butEuler = createButton("e", ButtonType.NUMBER);
 
         setupLayout();
     }
@@ -183,12 +187,16 @@ public class SwingView implements View {
         subPanels[7].add(butCos);
         subPanels[7].add(butSin);
         subPanels[7].add(butTan);
+        
+        subPanels[7].add(butPi);
         mainPanel.add(subPanels[7]);
 
         // --- Row 8 ---
         subPanels[8].add(butPercent);
         subPanels[8].add(butAbs);
         subPanels[8].add(butBin);
+        
+        subPanels[8].add(butEuler);
         mainPanel.add(subPanels[8]);
     }
 
@@ -230,7 +238,10 @@ public class SwingView implements View {
         butAbs.addActionListener(e -> eventHandler.onUnaryOperatorPressed(ABS));
         butBin.addActionListener(e -> eventHandler.onUnaryOperatorPressed(BIN));
         butNegate.addActionListener(e -> eventHandler.onUnaryOperatorPressed(NEGATE));
-
+        
+        butPi.addActionListener(e -> eventHandler.onPiNumberPressed());
+        butEuler.addActionListener(e -> eventHandler.onEulerNumberPressed());
+        
         // Other actions
         butDecimal.addActionListener(e -> eventHandler.onDecimalPressed());
         butEqual.addActionListener(e -> eventHandler.onEqualsPressed());

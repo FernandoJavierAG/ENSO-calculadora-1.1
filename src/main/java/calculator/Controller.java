@@ -134,4 +134,34 @@ public class Controller implements EventHandler {
             return formatted.replaceAll("0*$", "").replaceAll("\\.$", "");
         }
     }
+    
+    @Override
+    public void onPiNumberPressed() {
+
+        // After a user presses equals and gets a result, 
+        // the next number press should start a new input
+        if (resetingInput) {
+            displayBuffer = new StringBuilder();
+            view.clearDisplay();
+            resetingInput = false;
+        }
+
+        displayBuffer.append("3.1415926");
+        view.setDisplay(displayBuffer.toString());
+    }
+    
+    @Override
+    public void onEulerNumberPressed() {
+
+        // After a user presses equals and gets a result, 
+        // the next number press should start a new input
+        if (resetingInput) {
+            displayBuffer = new StringBuilder();
+            view.clearDisplay();
+            resetingInput = false;
+        }
+
+        displayBuffer.append("2.7182818");
+        view.setDisplay(displayBuffer.toString());
+    }
 }
