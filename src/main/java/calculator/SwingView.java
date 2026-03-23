@@ -56,7 +56,7 @@ public class SwingView implements View {
 
     public SwingView() throws IOException {
         Locale.setDefault(Locale.US); // Asegura que el formato decimal use punto como separador
-        DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale.US);
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
         symbols.setDecimalSeparator(',');
         decimalFormat = new DecimalFormat("0.###############", symbols);
         decimalFormat.setGroupingUsed(false);
@@ -251,7 +251,7 @@ public class SwingView implements View {
     public Double getDisplayValue() {
         String textValue = text.getText().trim();
         textValue = textValue.replace(',', '.'); // Convertir coma a punto para parsear correctamente
-        return Double.parseDouble(textValue);
+        
 
         if (textValue.isEmpty()) {
             return 0.0;
@@ -278,6 +278,8 @@ public class SwingView implements View {
             // Se por calquera motivo non é un número válido, devolve 0.0
             return 0.0;
         }
+
+        
     }
 
     @Override
