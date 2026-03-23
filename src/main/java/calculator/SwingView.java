@@ -40,7 +40,7 @@ public class SwingView implements View {
     private final JButton butAdd, butMinus, butMultiply, butDivide,
             butEqual, butCancel, butSqrt, butSquare, butInv, butCos, 
             butSin, butTan, butPower, butLog, butPercent, butAbs, butBin, 
-            butln, butNegate, butDecimal;
+            butln, butNegate, butDecimal, butAcos, butAsin, butAtan;
 
     private EventHandler eventHandler;
 
@@ -102,6 +102,9 @@ public class SwingView implements View {
         butCos = createButton("cos", ButtonType.FUNCTION);
         butSin = createButton("sin", ButtonType.FUNCTION);
         butTan = createButton("tan", ButtonType.FUNCTION);
+        butAcos = createButton("acos",ButtonType.FUNCTION);
+        butAsin = createButton("asin",ButtonType.FUNCTION);
+        butAtan = createButton("atan",ButtonType.FUNCTION);
         butln = createButton("ln", ButtonType.FUNCTION);
         butPower = createButton("x^y", ButtonType.FUNCTION);
         butLog = createButton("log", ButtonType.FUNCTION);
@@ -177,12 +180,17 @@ public class SwingView implements View {
         subPanels[6].add(butSquare);
         subPanels[6].add(butSqrt);
         subPanels[6].add(butPower);
+        subPanels[6].add(Box.createHorizontalStrut(15));
+        subPanels[6].add(butAcos);
+        subPanels[6].add(butAsin);
         mainPanel.add(subPanels[6]);
 
         // --- Row 7 ---
         subPanels[7].add(butCos);
         subPanels[7].add(butSin);
         subPanels[7].add(butTan);
+        subPanels[7].add(Box.createHorizontalStrut(15));
+        subPanels[7].add(butAtan);
         mainPanel.add(subPanels[7]);
 
         // --- Row 8 ---
@@ -224,6 +232,9 @@ public class SwingView implements View {
         butCos.addActionListener(e -> eventHandler.onUnaryOperatorPressed(COS));
         butSin.addActionListener(e -> eventHandler.onUnaryOperatorPressed(SIN));
         butTan.addActionListener(e -> eventHandler.onUnaryOperatorPressed(TAN));
+        butAcos.addActionListener(e -> eventHandler.onUnaryOperatorPressed(ACOS));
+        butAsin.addActionListener(e -> eventHandler.onUnaryOperatorPressed(ASIN));
+        butAtan.addActionListener(e -> eventHandler.onUnaryOperatorPressed(ATAN));
         butLog.addActionListener(e -> eventHandler.onUnaryOperatorPressed(LOG));
         butln.addActionListener(e -> eventHandler.onUnaryOperatorPressed(LN));
         butPercent.addActionListener(e -> eventHandler.onUnaryOperatorPressed(PERCENT));
