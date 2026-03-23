@@ -55,8 +55,8 @@ public class SwingView implements View {
     public enum ButtonType { NUMBER, FUNCTION }
 
     public SwingView() throws IOException {
-        Locale.setDefault(Locale("es", "ES"));
-        DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale("es", "ES"));
+        Locale.setDefault(Locale.US); // Asegura que el formato decimal use punto como separador
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale.US);
         symbols.setDecimalSeparator(',');
         decimalFormat = new DecimalFormat("0.###############", symbols);
         decimalFormat.setGroupingUsed(false);
@@ -251,7 +251,7 @@ public class SwingView implements View {
     public Double getDisplayValue() {
         String textValue = text.getText().trim();
         textValue = textValue.replace(',', '.'); // Convertir coma a punto para parsear correctamente
-        return parseDoubleSafe(textValue);
+        return Double.parseDouble(textValue);
 
         if (textValue.isEmpty()) {
             return 0.0;
