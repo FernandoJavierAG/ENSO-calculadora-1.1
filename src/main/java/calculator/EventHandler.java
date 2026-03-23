@@ -55,4 +55,19 @@ public interface EventHandler {
      * Handle the "e" button
      */
     void onEulerNumberPressed();
+    
+    /**
+     * Handle the Memory Store button press
+     */
+    void onStorePressed();
+    
+    /**
+     * Handle the Memory Recover button press
+     */
+    void onRecoverPressed();
+    
+    /**
+     * Handle the Memory Clear button press
+     */
+    void onClearMemPressed();
 }

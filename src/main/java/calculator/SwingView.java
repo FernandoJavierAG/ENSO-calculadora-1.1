@@ -42,6 +42,8 @@ public class SwingView implements View {
             butSin, butTan, butPower, butLog, butPercent, butAbs, butBin, 
              butln, butNegate, butDecimal, butAcos, butAsin, butAtan;
     private final JButton butPi, butEuler;
+    //Memoria
+    private final JButton butStore, butRecover, butClear;
 
     private EventHandler eventHandler;
 
@@ -116,6 +118,11 @@ public class SwingView implements View {
         butPi = createButton("π", ButtonType.NUMBER);
         butEuler = createButton("e", ButtonType.NUMBER);
         butDecimal = createButton(",", ButtonType.NUMBER);
+        
+        //Memoria
+        butStore    = createButton("MS", ButtonType.FUNCTION);
+        butRecover  = createButton("MR", ButtonType.FUNCTION);
+        butClear    = createButton("MC", ButtonType.FUNCTION);
 
         setupLayout();
     }
@@ -168,6 +175,11 @@ public class SwingView implements View {
         subPanels[4].add(butNegate);
         subPanels[4].add(butNums[0]);
         subPanels[4].add(butDecimal);
+        // Memoria
+        subPanels[4].add(Box.createHorizontalStrut(15));
+        subPanels[4].add(butStore);
+        subPanels[4].add(butRecover);
+        
         mainPanel.add(subPanels[4]);
 
         // --- Extra separation ---
@@ -178,6 +190,8 @@ public class SwingView implements View {
         subPanels[5].add(butln);
         subPanels[5].add(butLog);
         mainPanel.add(subPanels[5]);
+        subPanels[5].add(Box.createHorizontalStrut(15));
+        subPanels[5].add(butClear);
 
         // --- Row 6 ---
         subPanels[6].add(butSquare);
@@ -255,6 +269,12 @@ public class SwingView implements View {
         butDecimal.addActionListener(e -> eventHandler.onDecimalPressed());
         butEqual.addActionListener(e -> eventHandler.onEqualsPressed());
         butCancel.addActionListener(e -> eventHandler.onClearPressed());
+        
+        //Memoria
+        butStore.addActionListener(e -> eventHandler.onStorePressed());
+        butRecover.addActionListener(e -> eventHandler.onRecoverPressed());
+        butClear.addActionListener(e -> eventHandler.onClearMemPressed());
+        
     }
 
     @Override
