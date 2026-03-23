@@ -18,6 +18,7 @@ public class Controller implements EventHandler {
     private final View view;
     private StringBuilder displayBuffer;
     private boolean resetingInput = false;
+    private double memory = 0;
 
     public Controller(CalculatorModel model, View view) {
         this.model = model;
@@ -116,6 +117,26 @@ public class Controller implements EventHandler {
         model.reset();
         view.clearDisplay();
         resetingInput = false;
+    }
+    
+    // Memory
+    @Override
+    public void onStorePressed() {
+        Double num = view.getDisplayValue();
+        memory = num;
+    }
+    
+    @Override
+    public void onRecoverPressed() {
+        displayBuffer = new StringBuilder();
+        view.setDisplay(formatResult(memory));
+        displayBuffer.append(memory);
+        resetingInput = true;
+    }
+    
+    @Override
+    public void onClearMemPressed() {
+        memory = 0;
     }
     
     private String formatResult(Double result) {
