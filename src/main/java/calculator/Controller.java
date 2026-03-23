@@ -131,7 +131,7 @@ public class Controller implements EventHandler {
         }
         else {
             String formatted = String.format(java.util.Locale.US, "%.10f", result);
-            return formatted.replaceAll("0*$", "").replaceAll("\\.$", "");
+            return formatted.replaceAll("0*$", "").replaceAll("\\.$", "").replaceAll("\\.", ",");
         }
     }
 }
